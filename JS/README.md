@@ -1,0 +1,1 @@
+- This file will contain most of the JAVAScript sintax
