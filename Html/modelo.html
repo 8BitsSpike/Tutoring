@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <title>Modelo</title>
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="author" content="grupo2">
+    <meta name="viewpoint" content="width = 100%, initial-scale = 1.0">
+    <link rel="stylesheet" href="modelo.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="hamburgermenu">
+        </div>
+        <input class="img-perfil-header" type="image" src="img/perf.png"
+            alt="Imagem de usuário e botão de acesso ao perrfil de usuário" />
+        <form class="form-busca">
+            <label for="txt-buscar">
+                <spam></spam>
+            </label>
+            <input type="text" id="txt-buscar" size="29" maxlength="50"
+                alt="caixa de texto para informar o conteúdo que deseja buscar" />
+            <input type="image" src="img/lupa.png" alt="Pesquisar" class="btn-img-lupa" alt="botão de busca" />
+        </form>
+        <input class="btn-calend" type="image" src="img/calend.png" alt="botão de a cesso ao Calendário" />
+        <input class="btn-pomo" type="image" src="img/pomo.png" alt="botão de a cesso ao Pomodorometro" />
+        <input class="btn-exit" type="image" src="img/exit.png" alt="botão de a cesso ao Sair" />
+    </header>
+    <main>
+        <div class="conteudo">
+            <!--- aqui entra o conteúdo da página --->
+
+            <div id="editor"></div>
+            <button id="cmd">generate PDF</button>
+            <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+                integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+            <script type="text/javascript"
+                src="http://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+            <script type="text/javascript">
+                var doc = new jsPDF();
+                var specialElementHandlers = {
+                    '#editor': function (element, renderer) {
+                        return true;
+                    }
+                };
+
+                $('#cmd').click(function () {
+                    console.log("Hola");
+                    doc.fromHTML($('#content').html(), 15, 15, {
+                        'width': 170,
+                        'elementHandlers': specialElementHandlers
+                    });
+                    doc.save('sample-file.pdf');
+                });
+            </script>
+            <div id="content">
+                <h3>Hello, this is a H3 tag</h3>
+
+                <p>a pararaph</p>
+            </div>
+        </div>
+        <footer>
+            <div style="width: 80%; height: 100%;">
+                <div class="line-rodape"></div>
+                <div class="rodape">
+                    <img src="img/logopucmg.png" width="50px" height="50px" alt="logo Pontificia Universidade 
+                Católica de Minas Gerais.png">
+                    <div class="text-rodape">
+                        <p>
+                            EDUCATUBE foi desenvolvido pelo grupo 2 da turma 4 como parte do curso de Análise e
+                            Desenvolvimento
+                            de sistemas no 1 semestre de 2024 da PUC MG com a orientação do professor Carlos Alberto
+                            Marques Pietrobon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+
+</html>
